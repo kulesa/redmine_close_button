@@ -2,6 +2,7 @@ document.observe('dom:loaded', function()
 {
 	var ID_CLOSED = 5;
 	var ID_REJECTED = 6;
+  var THANK_YOU_MESSAGE = 'The issue is closed. Thanks everyone who contributed to the completion of this task!';
 
 	// redmine uses prototype so use it.
 
@@ -57,10 +58,12 @@ document.observe('dom:loaded', function()
 		return;
 	}
   var done_ratio = $('issue_done_ratio');
+  var notes = $('notes');
 	var closer = function(e)
 	{
 		s.value = ID_CLOSED;
     done_ratio.value = 100;
+    notes.value = THANK_YOU_MESSAGE;
 		f.submit();
 	};
 	var closeButtonTemplate = $$('a.redmine-close-button')[0];
